@@ -69,7 +69,7 @@ flowchart LR
 | Charts | **D3.js** | One charting library, used deeply |
 | Report | **Jinja2 → WeasyPrint** | A real downloadable PDF briefing |
 | Tests | **pytest · Vitest** | 139 tests across domain models, engine, API, and UI |
-| Deploy | **Docker · HF Spaces · Vercel** | One-command local run; container to prod |
+| Deploy | **Docker · Railway · Vercel** | One-command local run; container to prod |
 
 ---
 
@@ -179,7 +179,7 @@ docker-compose.yml   # db + backend
 - Correlated cross-stint degradation (shared per-race track factor).
 - Calibrating the Monte Carlo constants against the validation set (carefully — 5 races).
 
-See [DEPLOY.md](DEPLOY.md) for the Hugging Face Spaces + Vercel deployment guide, and
+See [DEPLOY.md](DEPLOY.md) for the Railway + Vercel deployment guide, and
 [CHANGELOG.md](CHANGELOG.md) for the release history.
 
 ## License

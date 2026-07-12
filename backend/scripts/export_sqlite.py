@@ -1,6 +1,6 @@
 """
 Snapshot the cached races from Postgres into a committed SQLite file, so the deployed backend
-(Hugging Face Spaces — a single container with no database) runs self-contained via
+(Railway — a single container with no database) runs self-contained via
     DATABASE_URL=sqlite:///data/race_data.db
 
 Local dev still uses Postgres. Re-run this after fetching new races.

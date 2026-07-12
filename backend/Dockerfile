@@ -17,10 +17,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-# Self-contained by default: bundled SQLite snapshot, no external DB needed (Hugging Face Spaces).
+# Self-contained by default: bundled SQLite snapshot, no external DB needed (e.g. Railway).
 # docker-compose overrides DATABASE_URL to Postgres and PORT to 8000 for local dev.
 ENV DATABASE_URL=sqlite:///data/race_data.db
 
-# HF Spaces serves on 7860 by default; PORT overrides it (compose sets 8000).
+# Bind the platform-injected PORT (Railway/Render); falls back to 7860, and compose sets 8000.
 EXPOSE 7860
 CMD ["sh", "-c", "uvicorn app.api.main:app --host 0.0.0.0 --port ${PORT:-7860}"]
