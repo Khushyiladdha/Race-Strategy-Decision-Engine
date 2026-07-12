@@ -1,0 +1,10 @@
+{
+  "a": 0.05,
+  "b": 0.001,
+  "base_lap_s": 90.0,
+  "n_laps_fit": 0,
+  "n_stints": 0,
+  "max_stint_lap_observed": 0,
+  "fit_rmse": NaN,
+  "fallback": true
+}

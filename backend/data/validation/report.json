@@ -1,0 +1,289 @@
+{
+  "aggregate": {
+    "races_validated": 5,
+    "pit_lap_mae": 4.38,
+    "first_stop_mae": 4.2,
+    "stop_count_mismatches": 1,
+    "compound_mismatches": 3,
+    "compound_exact_matches": 0,
+    "mean_abs_time_error_s": 34.01,
+    "mean_signed_time_error_s": 33.89
+  },
+  "races": [
+    {
+      "circuit_key": "bahrain",
+      "total_laps": 57,
+      "predicted": {
+        "strategy_key": "H-S-S@16,36",
+        "deterministic_time_s": 5651.19,
+        "mean_s": 5708.31,
+        "std_s": 52.18,
+        "p10_s": 5649.0,
+        "p50_s": 5703.7,
+        "p90_s": 5779.78,
+        "sc_benefit_freq": 0.167,
+        "seed": 0,
+        "n_simulations": 2000
+      },
+      "predicted_pit_laps": [
+        16,
+        36
+      ],
+      "predicted_compounds": [
+        "HARD",
+        "SOFT",
+        "SOFT"
+      ],
+      "robust_pick_key": "S-H-S@21,36",
+      "actual": {
+        "winner": "VER",
+        "pit_laps": [
+          14,
+          36
+        ],
+        "compounds": [
+          "SOFT",
+          "SOFT",
+          "HARD"
+        ],
+        "n_stops": 2
+      },
+      "field_median_first_stop": 12.0,
+      "metrics": {
+        "stop_count_match": true,
+        "pit_lap_mae": 1.0,
+        "first_stop_abs_error": 2,
+        "compound_match": "partial"
+      },
+      "timing": {
+        "predicted_total_s": 5651.19,
+        "actual_total_est_s": 5605.86,
+        "time_error_s": 45.33,
+        "green_lap_median_s": 97.576,
+        "lap_coverage": 0.877
+      },
+      "flags": [],
+      "explanation": "Same compounds, reordered"
+    },
+    {
+      "circuit_key": "spanish",
+      "total_laps": 66,
+      "predicted": {
+        "strategy_key": "M-S-S@18,42",
+        "deterministic_time_s": 5285.0,
+        "mean_s": 5336.02,
+        "std_s": 50.4,
+        "p10_s": 5282.75,
+        "p50_s": 5332.21,
+        "p90_s": 5405.36,
+        "sc_benefit_freq": 0.115,
+        "seed": 0,
+        "n_simulations": 2000
+      },
+      "predicted_pit_laps": [
+        18,
+        42
+      ],
+      "predicted_compounds": [
+        "MEDIUM",
+        "SOFT",
+        "SOFT"
+      ],
+      "robust_pick_key": "S-M-S@24,43",
+      "actual": {
+        "winner": "VER",
+        "pit_laps": [
+          26,
+          52
+        ],
+        "compounds": [
+          "MEDIUM",
+          "HARD",
+          "SOFT"
+        ],
+        "n_stops": 2
+      },
+      "field_median_first_stop": 16.0,
+      "metrics": {
+        "stop_count_match": true,
+        "pit_lap_mae": 9.0,
+        "first_stop_abs_error": 8,
+        "compound_match": "mismatch"
+      },
+      "timing": {
+        "predicted_total_s": 5285.0,
+        "actual_total_est_s": 5262.89,
+        "time_error_s": 22.11,
+        "green_lap_median_s": 79.165,
+        "lap_coverage": 0.924
+      },
+      "flags": [],
+      "explanation": "Team ran long (overcut)"
+    },
+    {
+      "circuit_key": "austrian",
+      "total_laps": 71,
+      "predicted": {
+        "strategy_key": "H-M-M@18,44",
+        "deterministic_time_s": 5057.22,
+        "mean_s": 5145.29,
+        "std_s": 63.84,
+        "p10_s": 5059.25,
+        "p50_s": 5133.31,
+        "p90_s": 5231.36,
+        "sc_benefit_freq": 0.1975,
+        "seed": 0,
+        "n_simulations": 2000
+      },
+      "predicted_pit_laps": [
+        18,
+        44
+      ],
+      "predicted_compounds": [
+        "HARD",
+        "MEDIUM",
+        "MEDIUM"
+      ],
+      "robust_pick_key": "H-M-M@17,44",
+      "actual": {
+        "winner": "VER",
+        "pit_laps": [
+          24,
+          49
+        ],
+        "compounds": [
+          "MEDIUM",
+          "HARD",
+          "MEDIUM"
+        ],
+        "n_stops": 2
+      },
+      "field_median_first_stop": 14.0,
+      "metrics": {
+        "stop_count_match": true,
+        "pit_lap_mae": 5.5,
+        "first_stop_abs_error": 6,
+        "compound_match": "partial"
+      },
+      "timing": {
+        "predicted_total_s": 5057.22,
+        "actual_total_est_s": 4971.02,
+        "time_error_s": 86.2,
+        "green_lap_median_s": 69.451,
+        "lap_coverage": 0.831
+      },
+      "flags": [],
+      "explanation": "Team ran long (overcut)"
+    },
+    {
+      "circuit_key": "singapore",
+      "total_laps": 62,
+      "predicted": {
+        "strategy_key": "M-M-S@22,44",
+        "deterministic_time_s": 6200.71,
+        "mean_s": 6391.01,
+        "std_s": 87.82,
+        "p10_s": 6277.46,
+        "p50_s": 6385.24,
+        "p90_s": 6509.11,
+        "sc_benefit_freq": 0.486,
+        "seed": 0,
+        "n_simulations": 2000
+      },
+      "predicted_pit_laps": [
+        22,
+        44
+      ],
+      "predicted_compounds": [
+        "MEDIUM",
+        "MEDIUM",
+        "SOFT"
+      ],
+      "robust_pick_key": "M-S-M@23,40",
+      "actual": {
+        "winner": "SAI",
+        "pit_laps": [
+          20
+        ],
+        "compounds": [
+          "MEDIUM",
+          "HARD"
+        ],
+        "n_stops": 1
+      },
+      "field_median_first_stop": 20.0,
+      "metrics": {
+        "stop_count_match": false,
+        "pit_lap_mae": null,
+        "first_stop_abs_error": 2,
+        "compound_match": "mismatch"
+      },
+      "timing": {
+        "predicted_total_s": 6200.71,
+        "actual_total_est_s": 6201.03,
+        "time_error_s": -0.32,
+        "green_lap_median_s": 99.63,
+        "lap_coverage": 0.903
+      },
+      "flags": [],
+      "explanation": "Compound mismatch"
+    },
+    {
+      "circuit_key": "japanese",
+      "total_laps": 53,
+      "predicted": {
+        "strategy_key": "M-S-S@19,36",
+        "deterministic_time_s": 5231.68,
+        "mean_s": 5308.96,
+        "std_s": 59.13,
+        "p10_s": 5232.6,
+        "p50_s": 5299.89,
+        "p90_s": 5388.42,
+        "sc_benefit_freq": 0.2575,
+        "seed": 0,
+        "n_simulations": 2000
+      },
+      "predicted_pit_laps": [
+        19,
+        36
+      ],
+      "predicted_compounds": [
+        "MEDIUM",
+        "SOFT",
+        "SOFT"
+      ],
+      "robust_pick_key": "M-S-S@19,36",
+      "actual": {
+        "winner": "VER",
+        "pit_laps": [
+          16,
+          37
+        ],
+        "compounds": [
+          "MEDIUM",
+          "MEDIUM",
+          "HARD"
+        ],
+        "n_stops": 2
+      },
+      "field_median_first_stop": 13.5,
+      "metrics": {
+        "stop_count_match": true,
+        "pit_lap_mae": 2.0,
+        "first_stop_abs_error": 3,
+        "compound_match": "mismatch"
+      },
+      "timing": {
+        "predicted_total_s": 5231.68,
+        "actual_total_est_s": 5215.56,
+        "time_error_s": 16.11,
+        "green_lap_median_s": 97.596,
+        "lap_coverage": 0.83
+      },
+      "flags": [
+        "undercut-signature: actual first stop 3 laps earlier than predicted with no SC coincidence (free-air model ignores track position)"
+      ],
+      "explanation": "Early undercut"
+    }
+  ]
+}

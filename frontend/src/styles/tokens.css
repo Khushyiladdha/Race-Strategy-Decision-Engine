@@ -1,0 +1,90 @@
+@import 'tailwindcss';
+
+/*
+  Single source of visual truth (build-plan §4). Tailwind v4 turns each --color-* into
+  bg-/text-/border-/fill-/stroke- utilities, each --font-* into a font-family utility, and
+  each --radius-* into a rounded- utility. Components reference these tokens only — never a
+  literal hex.
+*/
+@theme {
+  /* surfaces — layered for depth (page < nav < panel < raised). Neutrals tuned for elevation;
+     the §4 semantic colors below are unchanged. */
+  --color-base: #070a10; /* page background — almost black */
+  --color-nav: #0c1017; /* navigation bar — slightly lifted from the page */
+  --color-panel: #141922; /* card / panel surfaces */
+  --color-hairline: #2c3344; /* dividers, table rules, outlines — lifted from near-black */
+
+  /* text */
+  --color-ink: #f4f6fa; /* primary text */
+  --color-muted: #9ba3b7; /* secondary / caption text */
+
+  /* signature + semantic */
+  --color-fastest: #9d4edd; /* RESERVED: session-best / top-ranked only */
+  --color-gain: #22d3ee; /* time gained, positive outcome */
+  --color-loss: #f97360; /* time lost — distinct hue from tyre-soft red */
+
+  /* tyre compounds (chips only) */
+  --color-tyre-soft: #ed1c24;
+  --color-tyre-medium: #ffd100;
+  --color-tyre-hard: #f2f2f2;
+  --color-tyre-inter: #00a651;
+  --color-tyre-wet: #0072ce;
+
+  /* typography */
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* derived — NOT in §4, required to build components; labelled as our extrapolations */
+  --color-surface-raised: #1a2030; /* panel hover / raised state */
+  --color-ribbon-neutral: #3a4556; /* the §4 "gray-blue" for non-fastest ribbons */
+  --color-ink-dark: #0a0d12; /* dark text on light chips (avoids text-base collision) */
+  --radius-panel: 10px;
+  --radius-chip: 6px;
+
+  /* elevation + motion (Stage 7 polish). Shadows are neutral black — never palette colors,
+     except --shadow-glow which is the reserved fastest accent for the top-ranked element only. */
+  --shadow-card: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+  --shadow-raised: 0 10px 30px -14px rgba(0, 0, 0, 0.75);
+  --shadow-glow:
+    0 0 0 1px color-mix(in oklab, var(--color-fastest) 50%, transparent),
+    0 14px 36px -12px color-mix(in oklab, var(--color-fastest) 45%, transparent);
+  --shadow-row-glow: 0 0 18px -4px color-mix(in oklab, var(--color-fastest) 55%, transparent);
+  --animate-ribbon-in: ribbon-in 500ms ease-out both;
+  --animate-rise-in: rise-in 250ms ease-out both;
+}
+
+@keyframes ribbon-in {
+  from {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@layer base {
+  body {
+    /* Barely-perceptible radial gradient so the page reads as lit, not a flat wallpaper. */
+    background-color: #06080d;
+    background-image: radial-gradient(130% 90% at 50% -10%, #121725 0%, #090c12 45%, #06080d 100%);
+    background-attachment: fixed;
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+}

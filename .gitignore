@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+
+# FastF1 cache — large and regenerable (the fitted params + SQLite snapshot ARE committed)
+backend/data/fastf1_cache/
+
+# Node / Vite
+node_modules/
+dist/
+dist-ssr/
+.vite/
+*.local
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# OS / editor
+.DS_Store
+Thumbs.db
+
+# Claude / AI tooling
+.claude/launch.json

@@ -1,0 +1,10 @@
+{
+  "a": 0.05,
+  "b": 0.001,
+  "base_lap_s": 82.683,
+  "n_laps_fit": 4,
+  "n_stints": 1,
+  "max_stint_lap_observed": 4,
+  "fit_rmse": 0.2160827387830827,
+  "fallback": true
+}

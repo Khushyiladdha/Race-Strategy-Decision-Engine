@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Race Strategy Report — {{ report.circuit_key }}</title>
+    <meta name="author" content="Race Strategy Decision Engine" />
+    <meta name="generator" content="Race Strategy Decision Engine v{{ meta.engine_version }}" />
+    <meta name="description" content="Recommended pit strategy for {{ report.circuit_key }}" />
+    <meta name="dcterms.created" content="{{ meta.generated }}" />
+    <style>
+      @page {
+        size: A4;
+        margin: 15mm 16mm 18mm 16mm;
+        @bottom-left {
+          content: 'Race Strategy Decision Engine';
+          font-size: 7pt;
+          color: {{ style.FAINT }};
+        }
+        @bottom-center {
+          content: 'Page ' counter(page) ' of ' counter(pages);
+          font-size: 7pt;
+          color: {{ style.FAINT }};
+        }
+        @bottom-right {
+          content: 'Generated automatically';
+          font-size: 7pt;
+          color: {{ style.FAINT }};
+        }
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        color: {{ style.INK }};
+        background: {{ style.PAGE }};
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        font-size: 10pt;
+        line-height: 1.45;
+      }
+      .mono { font-family: 'DejaVu Sans Mono', monospace; }
+      .muted { color: {{ style.MUTED }}; }
+      .label {
+        font-size: 7pt;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: {{ style.MUTED }};
+      }
+      h1 { font-size: 20pt; margin: 0; letter-spacing: -0.01em; }
+      h2 {
+        font-size: 9pt;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: {{ style.MUTED }};
+        margin: 0 0 6px 0;
+      }
+      .rule { border-top: 1px solid {{ style.HAIRLINE }}; }
+      header { border-bottom: 2px solid {{ style.INK }}; padding-bottom: 8px; }
+      section { margin-top: 14px; }
+
+      .meta {
+        display: flex;
+        gap: 0;
+        margin-top: 10px;
+        border: 1px solid {{ style.HAIRLINE }};
+        border-radius: 6px;
+        overflow: hidden;
+      }
+      .meta > div {
+        flex: 1;
+        padding: 7px 10px;
+        border-right: 1px solid {{ style.HAIRLINE }};
+      }
+      .meta > div:last-child { border-right: none; }
+      .meta .v { font-size: 10pt; margin-top: 2px; }
+
+      .callout {
+        background: {{ style.CALLOUT_BG }};
+        border: 1px solid {{ style.HAIRLINE }};
+        border-radius: 6px;
+        padding: 10px 12px;
+      }
+      .confidence {
+        border-left: 3px solid {{ style.FASTEST }};
+        padding: 4px 0 4px 10px;
+        margin-top: 8px;
+        font-size: 9pt;
+      }
+
+      .chips { margin-right: 20px; }
+      .chip {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        display: inline-block;
+        vertical-align: middle;
+        text-align: center;
+        line-height: 26px;
+        margin-right: 6px;
+        font-family: 'DejaVu Sans Mono', monospace;
+        font-weight: 600;
+        font-size: 11pt;
+      }
+      /* inline-block, not flex — WeasyPrint 63's flex is unreliable for mixed content */
+      .headline { margin: 10px 0 6px; }
+      .headline > div {
+        display: inline-block;
+        vertical-align: bottom;
+        margin-right: 32px;
+      }
+      .big { font-size: 22pt; line-height: 1; }
+      .purple { color: {{ style.FASTEST }}; }
+
+      .cmp-row { display: flex; gap: 18px; }
+      .cmp-row > div { flex: 1; }
+      .metrics { margin-top: 6px; font-size: 8.5pt; }
+      .footer-note {
+        margin-top: 14px;
+        padding-top: 8px;
+        font-size: 8pt;
+        color: {{ style.MUTED }};
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Race Strategy Report</h1>
+      <div class="muted" style="margin-top: 2px">
+        {{ report.circuit_key | capitalize }} Grand Prix · {{ report.validation.total_laps }} laps
+      </div>
+    </header>
+
+    <div class="meta">
+      <div><div class="label">Circuit</div><div class="v">{{ report.circuit_key | capitalize }}</div></div>
+      <div><div class="label">Generated</div><div class="v mono">{{ meta.generated }}</div></div>
+      <div><div class="label">Engine</div><div class="v mono">v{{ meta.engine_version }}</div></div>
+      <div><div class="label">Monte Carlo</div><div class="v mono">{{ meta.n_sims }} sims</div></div>
+      <div><div class="label">Ranking</div><div class="v">{{ meta.ranking }}</div></div>
+    </div>
+
+    <section>
+      <h2>Executive summary</h2>
+      <div class="callout">{{ report.executive_summary }}</div>
+      <div class="confidence"><strong>{{ win_pct }}%</strong> — {{ report.confidence_note }}</div>
+    </section>
+
+    <section>
+      <h2>Recommended strategy</h2>
+      <div class="headline">
+        <div class="chips">
+          {% for c in chips %}
+          <span
+            class="chip"
+            style="background: {{ c.fill }}; color: {{ c.text }};{% if c.stroke != 'none' %} border: 1px solid {{ c.stroke }};{% endif %}"
+            >{{ c.letter }}</span
+          >
+          {% endfor %}
+        </div>
+        <div>
+          <div class="label">Expected finish</div>
+          <div class="big mono">{{ finish }}</div>
+        </div>
+        <div>
+          <div class="label">Win probability</div>
+          <div class="big mono purple">{{ win_pct }}%</div>
+        </div>
+      </div>
+      {{ rec_svg | safe }}
+    </section>
+
+    <section>
+      <h2>Predicted vs. actual — {{ report.validation.actual.winner }}</h2>
+      <div>
+        <div class="label" style="margin-bottom: 3px">Engine recommendation</div>
+        {{ engine_svg | safe }}
+      </div>
+      <div style="margin-top: 6px">
+        <div class="label" style="margin-bottom: 3px">
+          Actual winner — {{ report.validation.actual.winner }}
+        </div>
+        {{ actual_svg | safe }}
+      </div>
+      <div class="metrics mono muted">
+        First-stop error {{ report.validation.metrics.first_stop_abs_error }} laps ·
+        {% if report.validation.metrics.pit_lap_mae is not none %}pit-lap MAE
+        {{ report.validation.metrics.pit_lap_mae }} laps ·{% endif %} timing {{ timing_err }} s ·
+        compound {{ report.validation.metrics.compound_match }}
+      </div>
+    </section>
+
+    <div class="footer-note rule">
+      Assumptions: safety-car rate resolved per circuit · fuel model linear/constant · tyre data 2023
+      fitted. The engine optimizes free-air pace; it does not model track position, traffic, or the
+      undercut, so an earlier real stop is expected where those forces dominate.
+    </div>
+  </body>
+</html>
