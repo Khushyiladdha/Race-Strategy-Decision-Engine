@@ -1,8 +1,7 @@
 # Race Strategy Decision Engine
 
-**An F1 pit-stop strategy engine built on real timing data — it enumerates every legal strategy,
-stress-tests the best ones with Monte Carlo, and validates itself against what teams actually did in
-2023.**
+**A Formula 1 race strategy platform combining tyre degradation modelling, Monte Carlo simulation,
+historical validation, and interactive analytics to evaluate pit-stop strategies.**
 
 ![Python](https://img.shields.io/badge/python-3.11-3776AB?logo=python&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/typescript-5.7-3178C6?logo=typescript&logoColor=white)
@@ -34,8 +33,8 @@ Given a circuit, the engine:
 3. **Stress-tests** the strongest shapes with a **Monte Carlo** layer: discrete safety-car events and
    degradation noise, sharing scenarios across strategies (common random numbers) so it can compute a
    real **win probability** per shape.
-4. **Validates** itself: for each cached 2023 race it compares its free-air optimum to what the winner
-   actually did, and reports the error with a plain-English reason for every disagreement.
+4. **Validates** itself: for each cached historical race it compares its free-air optimum to what the
+   winner actually did, and reports the error with a plain-English reason for every disagreement.
 5. **Serves** all of this over a typed FastAPI, a React + D3 pit-wall UI, and a one-page
    **WeasyPrint PDF** briefing.
 
