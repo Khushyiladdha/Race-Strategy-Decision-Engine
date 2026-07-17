@@ -11,14 +11,15 @@ stress-tests the best ones with Monte Carlo, and validates itself against what t
 ![Tests](https://img.shields.io/badge/tests-139%20passing-3fb950)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 
+**🔗 Live demo — [race-strategy-decision-engine.vercel.app](https://race-strategy-decision-engine.vercel.app)**
+
 > Not a toy. It runs on **real FastF1 timing data**, every domain model is **fit to that data and
 > unit-tested**, and the whole engine is **validated against real race outcomes** — with the
 > disagreements measured and explained, not hidden.
 
-<!-- Add screenshots to docs/ and they'll render here:
 ![Dashboard](docs/dashboard.png)
 ![Validation](docs/validation.png)
--->
+![Model insights](docs/insights.png)
 
 ---
 
